@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8mf0mwoinv6r"]
+
+[ext_resource type="Texture2D" uid="uid://dp1a5jm6u22qu" path="res://Sprites/Background.png" id="1_tr7aa"]
+
+[node name="CanvasGroup" type="CanvasGroup"]
+texture_repeat = 2
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -255
+position = Vector2(225, 225)
+texture = ExtResource("1_tr7aa")
+region_enabled = true
+region_rect = Rect2(0, 0, 450, 450)
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(23, 22, 24, 429, 429, 430, 430, 26)
+closed = true
+width = 4.0
+default_color = Color(1, 0.45098, 1, 1)

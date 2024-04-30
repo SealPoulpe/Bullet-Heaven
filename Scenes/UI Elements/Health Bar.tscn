@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://bij6orohmmf8d"]
+
+[ext_resource type="Script" path="res://Scenes/UI Elements/Health Bar.gd" id="1_dhov8"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_dhov8")
+
+[node name="Health Bar" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 455.0
+offset_bottom = 35.0
+color = Color(1, 0, 0, 1)
+
+[node name="Background" type="ColorRect" parent="."]
+z_index = -1
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 451.0
+offset_bottom = 31.0
+scale = Vector2(1.0173, 1.28388)
+color = Color(0, 0, 0, 1)

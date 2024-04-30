@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bo0bslc5ristf"]
+
+[ext_resource type="Script" path="res://Scenes/Background/Tiled Background.gd" id="1_tnpe2"]
+
+[node name="TiledBackground" type="Node2D"]
+script = ExtResource("1_tnpe2")
