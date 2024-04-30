@@ -19,6 +19,17 @@ func _ready():
 	return
 	
 
+func _pick_spawn_point_relative_to_player():
+	var xLowerRange = rng.randi_range(0,1) * 500;
+	var yLowerRange = 500 if (xLowerRange == 0) else 0;
+	
+	print("x: " + str(xLowerRange) + " y: " + str(yLowerRange));
+	
+	var x = player.position.x + rng.randi_range(xLowerRange,1000) * pow(-1, rng.randi_range(1,2))
+	var y = player.position.y + rng.randi_range(yLowerRange,1000) * pow(-1, rng.randi_range(1,2))
+		
+	return Vector2(x,y);
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if (rng.randi_range(0, 255) > 200):
@@ -27,10 +38,9 @@ func _process(delta):
 		bulletInstance.position.y = rng.randi_range(0,100) * 50
 		add_child(bulletInstance)
 		
-	if (rng.randi_range(0, 255) > 100):
+	if (rng.randi_range(0, 255) > 200):
 		var mookInstance = mookLoader.instantiate();
-		mookInstance.position.x = player.position.x + rng.randi_range(500,1000) * pow(-1, rng.randi_range(1,2))
-		mookInstance.position.y = player.position.y + rng.randi_range(500,1000) * pow(-1, rng.randi_range(1,2))
+		mookInstance.position = _pick_spawn_point_relative_to_player();
 		add_child(mookInstance)
 	return
 
