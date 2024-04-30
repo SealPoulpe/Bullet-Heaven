@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0hgt0s03nttv"]
+
+[ext_resource type="Script" path="res://Scenes/Enemies/Mook.gd" id="1_3nr1l"]
+[ext_resource type="Texture2D" uid="uid://rr65vvhn7ypj" path="res://Sprites/Basic Enemy.png" id="1_t1ap1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sw2vi"]
+size = Vector2(17.6515, 15.5619)
+
+[node name="FirstBaddie" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_3nr1l")
+
+[node name="BasicEnemy" type="Sprite2D" parent="."]
+texture = ExtResource("1_t1ap1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1.19209e-07)
+scale = Vector2(1.30693, 3.02975)
+shape = SubResource("RectangleShape2D_sw2vi")

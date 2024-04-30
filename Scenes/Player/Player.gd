@@ -1,34 +1,32 @@
 extends CharacterBody2D
 
-var MOVESPEED = 500;
+var MOVESPEED = 250;
 
-var health;
+var health = 100;
 
 signal got_hit(newHealthValue)
+signal do_stomp
+
+func _ready():
+	get_node("Timer").timeout.connect(_do_stomp);
 
 func _got_hit():
 	health -= 5;
 	print("ouch! Health: " + str(health))
 	got_hit.emit(health)
-
-func _ready():
-	health = 100;
 	
 func _physics_process(delta):
-	
-	velocity.x = 0
-	velocity.y = 0
-	
 	if Input.is_key_pressed(KEY_W):
-		velocity.y = -1 * MOVESPEED;
+		position.y -= MOVESPEED * delta;
 	
 	if Input.is_key_pressed(KEY_A):
-		velocity.x = -1 * MOVESPEED;
+		position.x -= MOVESPEED * delta;
 	
 	if Input.is_key_pressed(KEY_S):
-		velocity.y = MOVESPEED;
+		position.y += MOVESPEED * delta;
 
 	if Input.is_key_pressed(KEY_D):
-		velocity.x = MOVESPEED;
-
-	move_and_slide()
+		position.x += MOVESPEED * delta;
+	
+func _do_stomp():
+	do_stomp.emit();

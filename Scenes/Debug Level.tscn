@@ -1,17 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://itdqbljracu3"]
+[gd_scene load_steps=5 format=3 uid="uid://itdqbljracu3"]
 
 [ext_resource type="PackedScene" uid="uid://cjvru5wfooibd" path="res://Scenes/GameManager.tscn" id="1_jefs8"]
 [ext_resource type="PackedScene" uid="uid://ckt3r21jjpo4x" path="res://Scenes/Player/Player.tscn" id="2_bsslq"]
-[ext_resource type="PackedScene" uid="uid://d1nn0iku3ete" path="res://Scenes/Enemy Attacks/Bad Bullet.tscn" id="2_uyccl"]
-[ext_resource type="PackedScene" uid="uid://b0hgt0s03nttv" path="res://Scenes/Enemies/First Baddie.tscn" id="3_5qrbs"]
+[ext_resource type="PackedScene" uid="uid://b0hgt0s03nttv" path="res://Scenes/Enemies/Mook.tscn" id="3_5qrbs"]
 [ext_resource type="PackedScene" uid="uid://bij6orohmmf8d" path="res://Scenes/UI Elements/Health Bar.tscn" id="4_lwpvn"]
 
 [node name="Debug Level" type="Node2D"]
 
 [node name="GameManager" parent="." instance=ExtResource("1_jefs8")]
-
-[node name="Bad Bullet" parent="GameManager" instance=ExtResource("2_uyccl")]
-position = Vector2(-296, -151)
 
 [node name="Player" parent="GameManager" instance=ExtResource("2_bsslq")]
 position = Vector2(-3, -10)
@@ -30,7 +26,7 @@ offset_top = 260.0
 offset_right = -192.0
 offset_bottom = 300.0
 
-[node name="FirstBaddie" parent="GameManager" instance=ExtResource("3_5qrbs")]
+[node name="Mook" parent="GameManager" instance=ExtResource("3_5qrbs")]
 position = Vector2(-201, 61)
 
 [connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
