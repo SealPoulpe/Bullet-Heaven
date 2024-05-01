@@ -18,5 +18,9 @@ texture = ExtResource("2_jyj0w")
 position = Vector2(-0.5, 15)
 shape = SubResource("RectangleShape2D_mg7an")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="StompTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="ShotTimer" type="Timer" parent="."]
+wait_time = 0.25
 autostart = true

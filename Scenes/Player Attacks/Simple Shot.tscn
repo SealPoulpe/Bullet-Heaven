@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://7j7bye65e5hc"]
+
+[ext_resource type="Texture2D" uid="uid://detx45x6d44hp" path="res://Sprites/Simple Shot.png" id="1_a8533"]
+[ext_resource type="Script" path="res://Scenes/Player Attacks/Simple Shot.gd" id="1_cmcng"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i3sh5"]
+radius = 4.12311
+
+[node name="SimpleShot" type="Area2D"]
+script = ExtResource("1_cmcng")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_i3sh5")
+
+[node name="SimpleShot" type="Sprite2D" parent="."]
+texture = ExtResource("1_a8533")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

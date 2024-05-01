@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends "res://Scenes/Enemies/Enemy.gd"
 
 var ENEMYSPEED = 10000;
 var health = 10;

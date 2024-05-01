@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dd7hu10r4ry1"]
+
+[ext_resource type="Texture2D" uid="uid://oy6lvrsfbk4t" path="res://Sprites/Eyeball.png" id="1_fqyp3"]
+[ext_resource type="Script" path="res://Scenes/Enemies/Eyeball.gd" id="1_hjege"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_de6w2"]
+radius = 23.3452
+
+[node name="Eyeball" type="CharacterBody2D"]
+script = ExtResource("1_hjege")
+
+[node name="Eyeball" type="Sprite2D" parent="."]
+texture = ExtResource("1_fqyp3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 0)
+shape = SubResource("CircleShape2D_de6w2")
