@@ -1,7 +1,6 @@
 extends "res://Scenes/Enemies/Enemy.gd"
 
 var ENEMYSPEED = 10000;
-var health = 10;
 
 var player;
 var velocityUnitVector;
@@ -13,6 +12,7 @@ func _get_unit_vector_toward_player():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player = get_parent().get_node("Player");
+	health = 10;
 	velocityUnitVector = _get_unit_vector_toward_player();
 
 func _physics_process(delta):

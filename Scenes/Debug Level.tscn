@@ -20,9 +20,9 @@ update_scale = false
 [node name="Camera2D" type="Camera2D" parent="GameManager"]
 
 [node name="Health Bar" parent="GameManager/Camera2D" instance=ExtResource("4_lwpvn")]
-offset_left = -232.0
-offset_top = 260.0
-offset_right = -192.0
-offset_bottom = 300.0
+offset_left = -225.0
+offset_top = 484.0
+offset_right = -185.0
+offset_bottom = 524.0
 
 [connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]

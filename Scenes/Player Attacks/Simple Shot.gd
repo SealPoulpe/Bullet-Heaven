@@ -25,5 +25,5 @@ func _on_body_entered(body):
 	var enemy = body as Enemy
 	if not enemy:
 		return;
-	enemy.queue_free();
+	enemy._damage_taken(1);
 	queue_free()
