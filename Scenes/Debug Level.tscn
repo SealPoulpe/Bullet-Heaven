@@ -1,12 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://itdqbljracu3"]
+[gd_scene load_steps=5 format=3 uid="uid://itdqbljracu3"]
 
 [ext_resource type="PackedScene" uid="uid://cjvru5wfooibd" path="res://Scenes/GameManager.tscn" id="1_jefs8"]
 [ext_resource type="PackedScene" uid="uid://ckt3r21jjpo4x" path="res://Scenes/Player/Player.tscn" id="2_bsslq"]
+[ext_resource type="PackedScene" uid="uid://22cn1ubkcw23" path="res://Scenes/Enemies/EnemyFactory.tscn" id="2_da5ml"]
 [ext_resource type="PackedScene" uid="uid://bij6orohmmf8d" path="res://Scenes/UI Elements/Health Bar.tscn" id="4_lwpvn"]
 
 [node name="Debug Level" type="Node2D"]
 
 [node name="GameManager" parent="." instance=ExtResource("1_jefs8")]
+
+[node name="EnemyFactory" parent="GameManager" instance=ExtResource("2_da5ml")]
 
 [node name="Player" parent="GameManager" instance=ExtResource("2_bsslq")]
 position = Vector2(-3, -10)

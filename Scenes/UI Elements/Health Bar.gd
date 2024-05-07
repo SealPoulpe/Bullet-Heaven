@@ -5,5 +5,4 @@ func _ready():
 	plyr.got_hit.connect(onhealthupdate);
 
 func onhealthupdate(newHealthValue):
-	print("new health bar length: " + str(450 * (newHealthValue / 100.0)))
 	get_node("Health Bar").size.x = 450 * (newHealthValue / 100.0);

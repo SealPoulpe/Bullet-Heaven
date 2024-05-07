@@ -10,10 +10,13 @@ var mookLoader = ResourceLoader.load("res://Scenes/Enemies/Mook.tscn")
 var eyeballLoader = ResourceLoader.load("res://Scenes/Enemies/Eyeball.tscn")
 var Direction = preload("res://Library/Enums.gd").Direction
 
+var EnemyFactory;
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player = get_node("Player");
+	EnemyFactory = get_node("EnemyFactory")
 	
 	var bgSceneInstance = bgLoader.instantiate()
 	add_child(bgSceneInstance)
@@ -41,14 +44,10 @@ func _process(delta):
 		add_child(bulletInstance)
 		
 	if (rng.randi_range(0, 255) > 225):
-		var mookInstance = mookLoader.instantiate();
-		mookInstance.position = _pick_spawn_point_relative_to_player();
-		add_child(mookInstance)
+		add_child(EnemyFactory._createMook(_pick_spawn_point_relative_to_player()))
 		
-		if (rng.randi_range(0, 255) > 225):
-			var eyeballInstance = eyeballLoader.instantiate();
-			eyeballInstance.position = _pick_spawn_point_relative_to_player();
-			add_child(eyeballInstance)
+	if (rng.randi_range(0, 255) > 225):
+		add_child(EnemyFactory._createEyeball(_pick_spawn_point_relative_to_player()))
 	return
 
 func _do_stomp(direction):

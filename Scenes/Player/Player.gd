@@ -15,7 +15,6 @@ func _ready():
 
 func _got_hit():
 	health -= 5;
-	print("ouch! Health: " + str(health))
 	got_hit.emit(health)
 	
 func _physics_process(delta):
