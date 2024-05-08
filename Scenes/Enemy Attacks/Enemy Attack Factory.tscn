@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://bv6chhcad6hgc"]
+
+[sub_resource type="GDScript" id="GDScript_258my"]
+script/source = "extends Node2D
+
+const Enemy = preload(\"res://Scenes/Enemies/Enemy.gd\")
+
+
+# Called when the node enters the scene tree for the first time.
+
+
+
+
+
+
+"
+
+[node name="EnemyAttackFactory" type="Node2D"]
+script = SubResource("GDScript_258my")

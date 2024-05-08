@@ -4,20 +4,21 @@ const Player = preload("res://Scenes/Player/Player.gd")
 var velocityUnitVector : Vector2
 var BULLETSPEED = 300;
 var player;
+var attack_type = "badbullet";
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	player = get_parent().get_node("Player");
-	velocityUnitVector = (player.position - position).normalized();
+signal kill_bullet(node: Node2D);
+	
+func _initialize():
+	visible = true;
 
 func _physics_process(delta):
 	position.x += (velocityUnitVector.x * BULLETSPEED) * delta;
-	position.y += (velocityUnitVector.y * BULLETSPEED) * delta;
-	
+	position.y += (velocityUnitVector.y * BULLETSPEED) * delta; 
 
 func _on_body_entered(body):
 	var player = body as Player
 	if not player:
 		return;
+		
 	player._got_hit();
-	queue_free()
+	kill_bullet.emit(self)

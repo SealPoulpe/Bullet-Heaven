@@ -10,7 +10,7 @@ signal do_stomp(direction)
 signal do_shot
 
 func _ready():
-	#get_node("StompTimer").timeout.connect(_do_stomp);
+	get_node("StompTimer").timeout.connect(_do_stomp);
 	get_node("ShotTimer").timeout.connect(_do_shot);
 
 func _got_hit():

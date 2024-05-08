@@ -7,6 +7,7 @@ var velocityUnitVector;
 func _initialize():
 	health = 2;
 	enemy_type = "mook"
+	visible = true;
 
 func _physics_process(delta):
 	velocityUnitVector = _get_unit_vector_toward_player();

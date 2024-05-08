@@ -37,11 +37,8 @@ func _pick_spawn_point_relative_to_player():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if (rng.randi_range(0, 255) > 200):
-		var bulletInstance = bulletLoader.instantiate()
-		bulletInstance.position.x = rng.randi_range(0,100) * 50
-		bulletInstance.position.y = rng.randi_range(0,100) * 50
-		add_child(bulletInstance)
+	#if (rng.randi_range(0, 255) > 200):
+	#	add_child(EnemyFactory._createBadBullet(Vector2(rng.randi_range(0,100) * 50, rng.randi_range(0,100) * 50)));
 		
 	if (rng.randi_range(0, 255) > 225):
 		add_child(EnemyFactory._createMook(_pick_spawn_point_relative_to_player()))
@@ -49,7 +46,7 @@ func _process(delta):
 	if (rng.randi_range(0, 255) > 225):
 		add_child(EnemyFactory._createEyeball(_pick_spawn_point_relative_to_player()))
 	return
-
+	
 func _do_stomp(direction):
 	var stompInstance = stompLoader.instantiate()
 	

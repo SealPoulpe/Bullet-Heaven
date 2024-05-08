@@ -1,5 +1,6 @@
 extends Area2D
 const Mook = preload("res://Scenes/Enemies/Mook.gd")
+const Enemy = preload("res://Scenes/Enemies/Enemy.gd")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -10,7 +11,7 @@ func _end_stomp():
 	queue_free();
 
 func _on_body_entered(body):
-	var mook = body as Mook;
-	if not mook:
+	var enemy = body as Enemy
+	if not enemy:
 		return;
-	mook.queue_free();
+	enemy._damage_taken(5);
