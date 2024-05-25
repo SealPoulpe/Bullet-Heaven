@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://45bj4s8rkkll"]
+
+[ext_resource type="Script" path="res://Scenes/UI Elements/Timer.gd" id="1_xauq6"]
+
+[node name="Timer" type="Node2D"]
+script = ExtResource("1_xauq6")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -52.0
+offset_top = -30.0
+offset_right = 52.0
+offset_bottom = 25.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 40
+text = "Label"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 120.0
+autostart = true

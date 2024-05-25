@@ -4,18 +4,33 @@ const Direction = preload("res://Library/Enums.gd").Direction
 var MOVESPEED = 250;
 var health = 100;
 var last_direction_faced
+var player_level;
+var skill_shot_level;
+var skill_stomp_level;
 
 signal got_hit(newHealthValue)
-signal do_stomp(direction)
-signal do_shot
+signal do_stomp(level, direction)
+signal do_shot(level)
 
 func _ready():
 	get_node("StompTimer").timeout.connect(_do_stomp);
 	get_node("ShotTimer").timeout.connect(_do_shot);
+	player_level = 1;
+	skill_shot_level = 1;
+	skill_stomp_level = 2;
 
 func _got_hit():
 	health -= 5;
 	got_hit.emit(health)
+	
+func _level_up(skill_name):
+	match skill_name:
+		"shot":
+			skill_shot_level += 1;
+		"stomp":
+			skill_stomp_level += 1;
+		_:
+			assert(false, "unregistered player skill type")
 	
 func _physics_process(delta):
 	if Input.is_key_pressed(KEY_W):
@@ -35,8 +50,8 @@ func _physics_process(delta):
 		last_direction_faced = Direction.RIGHT
 	
 func _do_stomp():
-	do_stomp.emit(last_direction_faced);
+	do_stomp.emit(skill_stomp_level, last_direction_faced);
 	
 func _do_shot():
-	do_shot.emit();
+	do_shot.emit(skill_shot_level);
 	

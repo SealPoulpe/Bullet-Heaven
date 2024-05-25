@@ -15,13 +15,13 @@ func _initialize():
 
 func _physics_process(delta):
 	if position.distance_to(Player.position) < safeDistance:
-		return;
-	
-	velocityUnitVector = _get_unit_vector_toward_player();
-	
+		velocityUnitVector = Vector2(0,0)
+	else:
+		velocityUnitVector = _get_unit_vector_toward_player();
+		
 	velocity.x = (velocityUnitVector.x * ENEMYSPEED) * delta;
 	velocity.y = (velocityUnitVector.y * ENEMYSPEED) * delta;
-	
+
 	move_and_slide()
 	
 	if(randi_range(0, 2000) > 1998):	#TODO: More intelligent firing mechanics
