@@ -3,8 +3,6 @@ extends Node2D
 const Enemy = preload("res://Scenes/Enemies/Enemy.gd")
 var Player;
 
-
-
 var mookLoader = ResourceLoader.load("res://Scenes/Enemies/Mook.tscn")
 var cachedMooks = [];
 
@@ -13,6 +11,8 @@ var cachedEyeballs = [];
 
 var bulletLoader = ResourceLoader.load("res://Scenes/Enemy Attacks/Bad Bullet.tscn")
 var cachedBadBullets = [];
+
+signal create_experience_crystal(position)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -56,6 +56,8 @@ func _killEnemy(node: Enemy):
 			cachedMooks.append(node);
 		_:
 			assert(false, "unregistered enemy type")
+			
+	create_experience_crystal.emit(node.position)
 	pass;
 
 func _killBullet(node): # TODO: Enemy Attacks need a generic type

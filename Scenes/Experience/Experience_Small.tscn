@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dpv0rv05e8u48"]
+
+[ext_resource type="Texture2D" uid="uid://bhlienauh23gc" path="res://Sprites/Experience Crystal.png" id="1_7ldji"]
+[ext_resource type="Script" path="res://Scenes/Experience/Experience_Small.gd" id="1_xn1d8"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8wqyg"]
+radius = 7.0
+height = 24.0
+
+[node name="Experience" type="Area2D"]
+script = ExtResource("1_xn1d8")
+
+[node name="ExperienceCrystal" type="Sprite2D" parent="."]
+texture = ExtResource("1_7ldji")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_8wqyg")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

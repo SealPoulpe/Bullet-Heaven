@@ -3,22 +3,29 @@ const Direction = preload("res://Library/Enums.gd").Direction
 
 var MOVESPEED = 250;
 var health = 100;
+var experience = 0;
+var next_level_experience_threshold = 200;
 var last_direction_faced
 var player_level;
 var skill_shot_level;
 var skill_stomp_level;
 
 signal got_hit(newHealthValue)
+signal got_experience(new_exp_percentage)
 signal do_stomp(level, direction)
 signal do_shot(level)
 
 func _ready():
 	get_node("StompTimer").timeout.connect(_do_stomp);
 	get_node("ShotTimer").timeout.connect(_do_shot);
+	_initialize();
+
+func _initialize():
 	player_level = 1;
 	skill_shot_level = 1;
 	skill_stomp_level = 2;
-
+	experience = 0;
+	
 func _got_hit():
 	health -= 5;
 	got_hit.emit(health)
@@ -54,4 +61,16 @@ func _do_stomp():
 	
 func _do_shot():
 	do_shot.emit(skill_shot_level);
+	
+func _get_experience():
+	experience += 10;
+	if (experience >= next_level_experience_threshold):
+		experience = experience % int(next_level_experience_threshold);
+		next_level_experience_threshold += (floor(next_level_experience_threshold*1.1));
+		##TODO########### LEVEL UP HERE!!
+		#################################
+	
+	print('exp: ' + str(experience))
+	print('thresh: ' + str(next_level_experience_threshold))
+	got_experience.emit(float(experience) / float(next_level_experience_threshold));
 	

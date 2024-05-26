@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://biy7c687unbeo"]
+
+[ext_resource type="Script" path="res://Scenes/UI Elements/Experience Bar.gd" id="1_ojeab"]
+
+[node name="ExperienceBar" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ojeab")
+
+[node name="Experience Bar" type="ColorRect" parent="."]
+offset_left = 5.0
+offset_top = 3.0
+offset_right = 455.0
+offset_bottom = 18.0
+color = Color(0, 0.541747, 0.948809, 1)
+
+[node name="Background" type="ColorRect" parent="."]
+z_index = -1
+offset_left = 1.0
+offset_top = 0.999999
+offset_right = 451.0
+offset_bottom = 16.0
+scale = Vector2(1.0173, 1.28388)
+color = Color(0, 0, 0, 1)

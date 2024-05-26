@@ -11,6 +11,9 @@ var eyeballLoader = ResourceLoader.load("res://Scenes/Enemies/Eyeball.tscn")
 var Direction = preload("res://Library/Enums.gd").Direction
 const Enemy = preload("res://Scenes/Enemies/Enemy.gd")
 
+var expSmallLoader = ResourceLoader.load("res://Scenes/Experience/Experience_Small.tscn")
+var cachedExperienceSmall = [];
+
 var EnemyFactory;
 
 
@@ -18,6 +21,8 @@ var EnemyFactory;
 func _ready():
 	player = get_node("Player");
 	EnemyFactory = get_node("EnemyFactory")
+	
+	EnemyFactory.create_experience_crystal.connect(_create_experience_crystal)
 	
 	var bgSceneInstance = bgLoader.instantiate()
 	add_child(bgSceneInstance)
@@ -56,9 +61,6 @@ func _pick_spawn_point_relative_to_player():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	#if (rng.randi_range(0, 255) > 200):
-	#	add_child(EnemyFactory._createBadBullet(Vector2(rng.randi_range(0,100) * 50, rng.randi_range(0,100) * 50)));
-		
 	if (rng.randi_range(0, 255) > 225):
 		add_child(EnemyFactory._createMook(_pick_spawn_point_relative_to_player()))
 		
@@ -104,3 +106,13 @@ func _do_shot(level):
 			add_child(_make_shot(Vector2(cos(radians_of_shot + i*15*PI/180), sin(radians_of_shot + i*15*PI/180))))
 			add_child(_make_shot(Vector2(cos(radians_of_shot - i*15*PI/180), sin(radians_of_shot - i*15*PI/180))))
 	
+func _create_experience_crystal(position):
+	var new_small_exp_crystal = expSmallLoader.instantiate();
+	new_small_exp_crystal.position = position;
+	new_small_exp_crystal.exp_collected.connect(_kill_experience)
+	add_child(new_small_exp_crystal);
+	pass
+	
+func _kill_experience(experience_node : Node2D):
+	experience_node.queue_free();
+	pass
