@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctsuln27sh32p"]
+
+[ext_resource type="Script" path="res://Scenes/UI Elements/Level Up Overlay.gd" id="1_ukfds"]
+
+[node name="LevelUpOverlay" type="Window"]
+position = Vector2i(0, 36)
+size = Vector2i(600, 400)
+borderless = true
+script = ExtResource("1_ukfds")
+
+[node name="Level Shot" type="Button" parent="."]
+process_mode = 2
+offset_left = 50.0
+offset_top = 70.0
+offset_right = 125.0
+offset_bottom = 124.0
+text = "Level Up
+Shot"
+
+[node name="Level Stomp" type="Button" parent="."]
+process_mode = 2
+offset_left = 200.0
+offset_top = 70.0
+offset_right = 275.0
+offset_bottom = 124.0
+text = "Level Up 
+Stomp"
+
+[node name="Level Nothing" type="Button" parent="."]
+process_mode = 2
+offset_left = 138.505
+offset_top = 140.0
+offset_right = 188.505
+offset_bottom = 171.0
+text = "Close
+"
+
+[connection signal="pressed" from="Level Shot" to="." method="_on_level_shot_pressed"]
+[connection signal="pressed" from="Level Stomp" to="." method="_on_level_stomp_pressed"]
+[connection signal="pressed" from="Level Nothing" to="." method="_on_level_nothing_pressed"]

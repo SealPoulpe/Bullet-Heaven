@@ -10,6 +10,8 @@ var player_level;
 var skill_shot_level;
 var skill_stomp_level;
 
+var level_up_overlay;
+
 signal got_hit(newHealthValue)
 signal got_experience(new_exp_percentage)
 signal do_stomp(level, direction)
@@ -18,6 +20,8 @@ signal do_shot(level)
 func _ready():
 	get_node("StompTimer").timeout.connect(_do_stomp);
 	get_node("ShotTimer").timeout.connect(_do_shot);
+	level_up_overlay = get_node("LevelUpOverlay")
+	level_up_overlay.level_up_skill_selected.connect(_level_up);
 	_initialize();
 
 func _initialize():
@@ -66,9 +70,9 @@ func _get_experience():
 	experience += 10;
 	if (experience >= next_level_experience_threshold):
 		experience = experience % int(next_level_experience_threshold);
-		next_level_experience_threshold += (floor(next_level_experience_threshold*1.1));
-		##TODO########### LEVEL UP HERE!!
-		#################################
+		next_level_experience_threshold += 50
+		get_tree().paused = true;
+		level_up_overlay.show();
 	
 	print('exp: ' + str(experience))
 	print('thresh: ' + str(next_level_experience_threshold))
