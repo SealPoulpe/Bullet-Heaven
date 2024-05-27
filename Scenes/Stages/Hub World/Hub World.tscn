@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://dg8o7r4eqbmca"]
+
+[ext_resource type="Script" path="res://Scenes/Stages/Hub World/Hub World.gd" id="1_hc5cc"]
+[ext_resource type="PackedScene" uid="uid://bhsjspyd8u2kr" path="res://Scenes/Stages/Hub World/Start Level Element.tscn" id="3_24oif"]
+[ext_resource type="Texture2D" uid="uid://eygihtw50tqa" path="res://Sprites/Hub BG.png" id="3_nunhw"]
+[ext_resource type="Script" path="res://Scenes/Stages/Hub World/Start Level Element.gd" id="4_g4g1y"]
+
+[node name="HubWorld" type="Node2D"]
+script = ExtResource("1_hc5cc")
+
+[node name="HubBg" type="Sprite2D" parent="."]
+position = Vector2(-59, 364)
+texture = ExtResource("3_nunhw")
+
+[node name="StartLevelElement2" parent="." instance=ExtResource("3_24oif")]
+position = Vector2(-129, -386)
+script = ExtResource("4_g4g1y")
+
+[connection signal="body_entered" from="StartLevelElement2" to="." method="_on_start_level_element_2_body_entered"]

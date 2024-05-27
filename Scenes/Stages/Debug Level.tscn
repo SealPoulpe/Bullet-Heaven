@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://itdqbljracu3"]
+
+[ext_resource type="Script" path="res://Scenes/Stages/Debug Level.gd" id="1_qplfo"]
+
+[node name="Debug Level" type="Node2D"]
+script = ExtResource("1_qplfo")
+
+[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]

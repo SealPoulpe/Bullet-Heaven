@@ -34,6 +34,14 @@ func _got_hit():
 	health -= 5;
 	got_hit.emit(health)
 	
+func _enable_attacks(is_enabled : bool):
+	if is_enabled:
+		get_node("StompTimer").start()
+		get_node("ShotTimer").start()
+	else:
+		get_node("StompTimer").stop()
+		get_node("ShotTimer").stop()
+	
 func _level_up(skill_name):
 	match skill_name:
 		"shot":
@@ -74,7 +82,5 @@ func _get_experience():
 		get_tree().paused = true;
 		level_up_overlay.show();
 	
-	print('exp: ' + str(experience))
-	print('thresh: ' + str(next_level_experience_threshold))
 	got_experience.emit(float(experience) / float(next_level_experience_threshold));
 	

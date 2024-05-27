@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhsjspyd8u2kr"]
+
+[ext_resource type="Texture2D" uid="uid://c1onll5ewckww" path="res://Sprites/Start Button.png" id="1_y4dx5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ekl5j"]
+radius = 96.4002
+
+[node name="StartLevelElement" type="Area2D"]
+
+[node name="StartButton" type="Sprite2D" parent="."]
+texture = ExtResource("1_y4dx5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 2)
+rotation = 1.5708
+scale = Vector2(0.58, 0.995)
+shape = SubResource("CircleShape2D_ekl5j")

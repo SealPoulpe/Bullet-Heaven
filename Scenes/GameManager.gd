@@ -2,7 +2,7 @@ extends Node
 
 var rng = RandomNumberGenerator.new()
 var player
-var bgLoader = ResourceLoader.load("res://Scenes/Background/Tiled Background.tscn")
+
 var bulletLoader = ResourceLoader.load("res://Scenes/Enemy Attacks/Bad Bullet.tscn")
 var stompLoader = ResourceLoader.load("res://Scenes/Player Attacks/Circle Stomp.tscn")
 var shotLoader = ResourceLoader.load("res://Scenes/Player Attacks/Simple Shot.tscn")
@@ -14,8 +14,9 @@ const Enemy = preload("res://Scenes/Enemies/Enemy.gd")
 var expSmallLoader = ResourceLoader.load("res://Scenes/Experience/Experience_Small.tscn")
 var cachedExperienceSmall = [];
 
-var EnemyFactory;
+var stage_active = false;
 
+var EnemyFactory;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -24,11 +25,11 @@ func _ready():
 	
 	EnemyFactory.create_experience_crystal.connect(_create_experience_crystal)
 	
-	var bgSceneInstance = bgLoader.instantiate()
-	add_child(bgSceneInstance)
-	
 	player.do_stomp.connect(_do_stomp);
 	player.do_shot.connect(_do_shot);
+	
+	player._enable_attacks(false);
+		
 	return
 
 func _get_closest_enemy_to_player():
@@ -61,12 +62,12 @@ func _pick_spawn_point_relative_to_player():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if (rng.randi_range(0, 255) > 225):
-		add_child(EnemyFactory._createMook(_pick_spawn_point_relative_to_player()))
+	if(stage_active):
+		if (rng.randi_range(0, 255) > 225):
+			add_child(EnemyFactory._createMook(_pick_spawn_point_relative_to_player()))
 		
-	if (rng.randi_range(0, 255) > 225):
-		add_child(EnemyFactory._createEyeball(_pick_spawn_point_relative_to_player()))
-	return
+		if (rng.randi_range(0, 255) > 225):
+			add_child(EnemyFactory._createEyeball(_pick_spawn_point_relative_to_player()))
 	
 func _do_stomp(level, direction):
 	var stompInstance = stompLoader.instantiate()

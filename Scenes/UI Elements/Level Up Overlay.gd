@@ -19,3 +19,4 @@ func _on_level_nothing_pressed():
 func _resume():
 	get_tree().paused = false;
 	self.hide();
+	
