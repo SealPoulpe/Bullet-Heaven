@@ -28,10 +28,10 @@ update_rotation = false
 update_scale = false
 
 [node name="DebugRadiuses" parent="Player" instance=ExtResource("8_sxe7c")]
+visible = false
 position = Vector2(3, 10)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.25, 0.25)
 
 [node name="Timer" parent="Camera2D" instance=ExtResource("5_tl1iy")]
 position = Vector2(0, -482)

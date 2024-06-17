@@ -15,12 +15,3 @@ region_rect = Rect2(0, 0, 450, 450)
 points = PackedVector2Array(-178, -177, -176, 179, 181, 179, 181, -180)
 closed = true
 default_color = Color(1, 0.501961, 1, 1)
-
-[node name="RichTextLabel" type="RichTextLabel" parent="." index="3"]
-offset_left = -143.0
-offset_top = -123.0
-offset_right = 148.0
-offset_bottom = 67.0
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 63
-text = "Hello Yes"

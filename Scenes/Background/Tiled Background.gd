@@ -8,6 +8,9 @@ var GRID_HEIGHT : int;
 
 var tiles = []
 
+var pink_tile_loader = ResourceLoader.load("res://Scenes/Background/Single Tiles/Debug Tile Pink.tscn")
+var green_tile_loader = ResourceLoader.load("res://Scenes/Background/Single Tiles/Debug Tile Green.tscn")
+
 func _ready():
 	DESTRUCTION_RADIUS = TILESIZE * 4;
 	GRID_WIDTH = (floor(DESTRUCTION_RADIUS * 2 / float(TILESIZE)))
@@ -16,7 +19,7 @@ func _ready():
 	_initialize_background()
 
 func _create_tile(grid_x : int, grid_y : int):
-	var tile_instance = ResourceLoader.load("res://Scenes/Background/Single Tiles/Debug Tile Pink.tscn").instantiate()
+	var tile_instance = pink_tile_loader.instantiate() if randf() > 0.5 else green_tile_loader.instantiate();
 			
 	# tell the tile where it lives for dynamic generation later
 	tile_instance.grid_x = grid_x;
@@ -34,7 +37,6 @@ func _delete_tile(tile):
 	tiles.erase(tile);
 		
 func _update_tiles(player):
-	var leftmost_x = 0
 	var tiles_to_save = []
 	var tiles_to_add = []
 	

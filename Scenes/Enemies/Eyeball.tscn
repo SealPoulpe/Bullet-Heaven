@@ -1,10 +1,45 @@
-[gd_scene load_steps=4 format=3 uid="uid://dd7hu10r4ry1"]
+[gd_scene load_steps=6 format=3 uid="uid://dd7hu10r4ry1"]
 
 [ext_resource type="Texture2D" uid="uid://oy6lvrsfbk4t" path="res://Sprites/Eyeball.png" id="1_fqyp3"]
 [ext_resource type="Script" path="res://Scenes/Enemies/Eyeball.gd" id="1_hjege"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_de6w2"]
 radius = 23.3452
+
+[sub_resource type="Animation" id="Animation_mc345"]
+resource_name = "Go Red"
+length = 3.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Eyeball:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 3.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_fire_bullet"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yew4o"]
+_data = {
+"Go Red": SubResource("Animation_mc345")
+}
 
 [node name="Eyeball" type="CharacterBody2D"]
 script = ExtResource("1_hjege")
@@ -15,3 +50,8 @@ texture = ExtResource("1_fqyp3")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2, 0)
 shape = SubResource("CircleShape2D_de6w2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_yew4o")
+}

@@ -8,7 +8,8 @@ var grid_y;
 signal tile_entered(body: Player)
 
 func _ready():
-	get_node("RichTextLabel").text = "(" + str(grid_x) + ", " + str(grid_y) +")"
+	#debug
+	get_node("RichTextLabel").text = '[center]' + '(' + str(grid_x) + ', ' + str(grid_y) + ')' + '[/center]'
 	pass 
 
 
