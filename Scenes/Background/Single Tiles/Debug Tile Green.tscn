@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqfypegw8qn1f"]
+
+[ext_resource type="Texture2D" uid="uid://dp1a5jm6u22qu" path="res://Sprites/Background.png" id="1_4wynd"]
+[ext_resource type="PackedScene" uid="uid://ca43hqqwfvg4k" path="res://Scenes/Background/Single Tiles/Tile.tscn" id="1_yubmt"]
+
+[node name="Tile" instance=ExtResource("1_yubmt")]
+
+[node name="Background" type="Sprite2D" parent="." index="1"]
+texture_repeat = 2
+texture = ExtResource("1_4wynd")
+region_enabled = true
+region_rect = Rect2(0, 0, 450, 450)
+
+[node name="Line2D" type="Line2D" parent="." index="2"]
+points = PackedVector2Array(-178, -177, -176, 179, 181, 179, 181, -180)
+closed = true
+default_color = Color(0.293376, 0.547158, 0.207917, 1)

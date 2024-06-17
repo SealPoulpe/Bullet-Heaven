@@ -16,9 +16,9 @@ func _physics_process(delta):
 	position.y += (velocityUnitVector.y * BULLETSPEED) * delta; 
 
 func _on_body_entered(body):
-	var player = body as Player
-	if not player:
+	var player_instance = body as Player
+	if not player_instance:
 		return;
 		
-	player._got_hit();
+	player_instance._got_hit();
 	kill_bullet.emit(self)

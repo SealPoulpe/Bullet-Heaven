@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cjvru5wfooibd"]
+[gd_scene load_steps=9 format=3 uid="uid://cjvru5wfooibd"]
 
 [ext_resource type="Script" path="res://Scenes/GameManager.gd" id="1_dhq3g"]
 [ext_resource type="PackedScene" uid="uid://22cn1ubkcw23" path="res://Scenes/Enemies/EnemyFactory.tscn" id="2_75sa6"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://45bj4s8rkkll" path="res://Scenes/UI Elements/Timer.tscn" id="5_tl1iy"]
 [ext_resource type="PackedScene" uid="uid://bij6orohmmf8d" path="res://Scenes/UI Elements/Health Bar.tscn" id="6_kd0jn"]
 [ext_resource type="PackedScene" uid="uid://biy7c687unbeo" path="res://Scenes/UI Elements/Experience Bar.tscn" id="7_cucdn"]
+[ext_resource type="PackedScene" uid="uid://baa3uhyu4ayfm" path="res://Scenes/Background/Debug Radiuses.tscn" id="8_sxe7c"]
 
 [node name="GameManager" type="Node"]
 script = ExtResource("1_dhq3g")
@@ -26,7 +27,11 @@ remote_path = NodePath("../../Camera2D")
 update_rotation = false
 update_scale = false
 
+[node name="DebugRadiuses" parent="Player" instance=ExtResource("8_sxe7c")]
+position = Vector2(3, 10)
+
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.25, 0.25)
 
 [node name="Timer" parent="Camera2D" instance=ExtResource("5_tl1iy")]
 position = Vector2(0, -482)

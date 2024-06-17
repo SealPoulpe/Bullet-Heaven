@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhcxov5a1unsv"]
+
+[ext_resource type="PackedScene" uid="uid://ca43hqqwfvg4k" path="res://Scenes/Background/Single Tiles/Tile.tscn" id="1_l2mbv"]
+[ext_resource type="Texture2D" uid="uid://dp1a5jm6u22qu" path="res://Sprites/Background.png" id="1_l8jpw"]
+
+[node name="Tile" instance=ExtResource("1_l2mbv")]
+
+[node name="Background" type="Sprite2D" parent="." index="1"]
+texture_repeat = 2
+texture = ExtResource("1_l8jpw")
+region_enabled = true
+region_rect = Rect2(0, 0, 450, 450)
+
+[node name="Line2D" type="Line2D" parent="." index="2"]
+points = PackedVector2Array(-178, -177, -176, 179, 181, 179, 181, -180)
+closed = true
+default_color = Color(1, 0.501961, 1, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." index="3"]
+offset_left = -143.0
+offset_top = -123.0
+offset_right = 148.0
+offset_bottom = 67.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 63
+text = "Hello Yes"

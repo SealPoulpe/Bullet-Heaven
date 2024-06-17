@@ -12,7 +12,7 @@ func _convert_to_pretty_time_string(seconds : float):
 	var mins = int(seconds / 60.0)
 	return str(mins) + ":" + str(secs)
 
-func _process(delta):
+func _process(_delta):
 	var seconds_left = get_node("Timer").time_left
 	get_node("Label").text = _convert_to_pretty_time_string(seconds_left);
 	pass

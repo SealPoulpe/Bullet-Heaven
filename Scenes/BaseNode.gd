@@ -9,7 +9,7 @@ func _ready():
 	hub_world.change_levels.connect(_switch_level)
 	add_child(hub_world)
 
-func _switch_level(old_level_name, new_level_name: String):
+func _switch_level(_old_level_name, new_level_name: String):
 	get_node("HubWorld").queue_free()
 	
 	match new_level_name:

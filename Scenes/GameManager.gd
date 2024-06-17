@@ -61,7 +61,7 @@ func _pick_spawn_point_relative_to_player():
 	return Vector2(x,y);
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if(stage_active):
 		if (rng.randi_range(0, 255) > 225):
 			add_child(EnemyFactory._createMook(_pick_spawn_point_relative_to_player()))
@@ -110,10 +110,10 @@ func _do_shot(level):
 func _create_experience_crystal(position):
 	var new_small_exp_crystal = expSmallLoader.instantiate();
 	new_small_exp_crystal.position = position;
-	new_small_exp_crystal.exp_collected.connect(_kill_experience)
-	add_child(new_small_exp_crystal);
+	new_small_exp_crystal.exp_collected.connect(_destroy_experience)
+	call_deferred('add_child', new_small_exp_crystal);
 	pass
 	
-func _kill_experience(experience_node : Node2D):
+func _destroy_experience(experience_node : Node2D):
 	experience_node.queue_free();
 	pass

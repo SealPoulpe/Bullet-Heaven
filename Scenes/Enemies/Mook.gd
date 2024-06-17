@@ -16,6 +16,3 @@ func _physics_process(delta):
 	velocity.y = (velocityUnitVector.y * ENEMYSPEED) * delta;
 	
 	move_and_slide()
-
-func _on_body_entered(body):
-	return

@@ -26,6 +26,3 @@ func _physics_process(delta):
 	
 	if(randi_range(0, 2000) > 1998):	#TODO: More intelligent firing mechanics
 		fire_bullet.emit(Vector2(position.x, position.y))
-
-func _on_body_entered(body):
-	return

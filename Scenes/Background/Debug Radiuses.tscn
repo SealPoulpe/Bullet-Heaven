@@ -1,0 +1,32 @@
+[gd_scene load_steps=8 format=3 uid="uid://baa3uhyu4ayfm"]
+
+[ext_resource type="Texture2D" uid="uid://be6dgye4o1s0b" path="res://Sprites/Debug/200px.png" id="1_a6yww"]
+[ext_resource type="Texture2D" uid="uid://ydep5u7dpdca" path="res://Sprites/Debug/300px.png" id="2_ym7fe"]
+[ext_resource type="Texture2D" uid="uid://bhi0se4ia0oce" path="res://Sprites/Debug/500px.png" id="3_nsc7s"]
+[ext_resource type="Texture2D" uid="uid://cab61urab4tl8" path="res://Sprites/Debug/1000px.png" id="4_8t0ew"]
+[ext_resource type="Texture2D" uid="uid://dm78oed1u2v12" path="res://Sprites/Debug/2000px.png" id="5_48eoe"]
+[ext_resource type="Texture2D" uid="uid://badjmvxcmlvir" path="res://Sprites/Debug/2500px.png" id="6_ewaka"]
+[ext_resource type="Texture2D" uid="uid://coeq5lixwdaf3" path="res://Sprites/Debug/3000px.png" id="7_5v87u"]
+
+[node name="DebugRadiuses" type="Node2D"]
+
+[node name="200Px" type="Sprite2D" parent="."]
+texture = ExtResource("1_a6yww")
+
+[node name="300Px" type="Sprite2D" parent="."]
+texture = ExtResource("2_ym7fe")
+
+[node name="500Px" type="Sprite2D" parent="."]
+texture = ExtResource("3_nsc7s")
+
+[node name="1000Px" type="Sprite2D" parent="."]
+texture = ExtResource("4_8t0ew")
+
+[node name="2000Px" type="Sprite2D" parent="."]
+texture = ExtResource("5_48eoe")
+
+[node name="2500Px" type="Sprite2D" parent="."]
+texture = ExtResource("6_ewaka")
+
+[node name="3000Px" type="Sprite2D" parent="."]
+texture = ExtResource("7_5v87u")

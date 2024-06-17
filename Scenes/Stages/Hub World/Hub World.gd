@@ -8,9 +8,6 @@ signal change_levels(old_level_name: String, new_level_name: String)
 func _ready():
 	game_manager = get_parent().get_node("GameManager");
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 func _on_start_level_element_2_body_entered(body):
 	var player = body as Player

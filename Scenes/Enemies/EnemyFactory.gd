@@ -19,14 +19,14 @@ func _ready():
 	Player = get_parent().get_node("Player")
 	pass # Replace with function body.
 
-func _createMook(position: Vector2):
+func _createMook(spawn_position: Vector2):
 	var newMook = mookLoader.instantiate() if cachedMooks.is_empty() else cachedMooks.pop_back();
 	newMook.visible = true;
 	newMook._initialize();
-	newMook.position = position
+	newMook.position = spawn_position
 	return newMook;
 
-func _createEyeball(position: Vector2):
+func _createEyeball(spawn_position: Vector2):
 	var newEyeball;
 	if (cachedEyeballs.is_empty()):
 		newEyeball = eyeballLoader.instantiate()
@@ -35,16 +35,22 @@ func _createEyeball(position: Vector2):
 		newEyeball = cachedEyeballs.pop_back();
 		
 	newEyeball._initialize();
-	newEyeball.position = position
+	newEyeball.position = spawn_position
 	return newEyeball;
 
-func _createBadBullet(position: Vector2):
-	var newBadBullet = bulletLoader.instantiate() if cachedBadBullets.is_empty() else cachedBadBullets.pop_back();
-	newBadBullet._initialize();
-	newBadBullet.position = position
-	newBadBullet.velocityUnitVector = (Player.position - position).normalized();
-	newBadBullet.kill_bullet.connect(_killBullet);
-	add_child(newBadBullet)
+func _createBadBullet(spawn_position: Vector2):
+	var new_bad_bullet;
+	if(cachedBadBullets.is_empty()):
+		new_bad_bullet = bulletLoader.instantiate()
+		new_bad_bullet.kill_bullet.connect(_killBullet);
+		add_child(new_bad_bullet)
+	else:
+		new_bad_bullet = cachedBadBullets.pop_back()
+		new_bad_bullet.visible = true
+		
+	new_bad_bullet._initialize();
+	new_bad_bullet.velocityUnitVector = (Player.position - spawn_position).normalized();
+	new_bad_bullet.position = spawn_position
 	
 func _killEnemy(node: Enemy):
 	node.visible = false;
