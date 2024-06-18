@@ -1,7 +1,8 @@
-extends Node2D
+extends Node
 
 const Enemy = preload("res://Scenes/Enemies/Enemy.gd")
 var Player;
+var Animation_Player;
 
 var mookLoader = ResourceLoader.load("res://Scenes/Enemies/Mook.tscn")
 var cachedMooks = [];
@@ -12,15 +13,22 @@ var cachedEyeballs = [];
 var bulletLoader = ResourceLoader.load("res://Scenes/Enemy Attacks/Bad Bullet.tscn")
 var cachedBadBullets = [];
 
+var line_attack_loader = ResourceLoader.load("res://Scenes/Enemy Attacks/Line Attack.tscn")
+
 signal create_experience_crystal(position)
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	Player = get_parent().get_node("Player")
-	pass # Replace with function body.
+	Animation_Player = get_node("AnimationPlayer")
 
 func _createMook(spawn_position: Vector2):
-	var newMook = mookLoader.instantiate() if cachedMooks.is_empty() else cachedMooks.pop_back();
+	var newMook
+	if(cachedMooks.is_empty()):
+		newMook = mookLoader.instantiate()
+		newMook.do_attack.connect(_create_line_attack)
+	else:
+		newMook = cachedMooks.pop_back()
+	
 	newMook.visible = true;
 	newMook._initialize();
 	newMook.position = spawn_position
@@ -51,6 +59,19 @@ func _createBadBullet(spawn_position: Vector2):
 	new_bad_bullet._initialize();
 	new_bad_bullet.velocityUnitVector = (Player.position - spawn_position).normalized();
 	new_bad_bullet.position = spawn_position
+	
+func _create_line_attack(enemy: CharacterBody2D):
+	var spawn_position = Vector2(enemy.position.x, enemy.position.y)
+	var new_line_attack = line_attack_loader.instantiate();
+	new_line_attack.get_node("Line2D").add_point(Vector2(0,0))
+	
+	var new_x = (Player.position.x - spawn_position.x) * 1.2
+	var new_y = (Player.position.y - spawn_position.y) * 1.2
+	
+	new_line_attack.get_node("Line2D").add_point(Vector2(new_x, new_y))
+	
+	enemy.add_child(new_line_attack)
+	pass
 	
 func _killEnemy(node: Enemy):
 	node.visible = false;

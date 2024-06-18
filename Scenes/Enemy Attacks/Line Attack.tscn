@@ -1,0 +1,66 @@
+[gd_scene load_steps=5 format=3 uid="uid://dn8ejcpaki2ui"]
+
+[ext_resource type="Script" path="res://Scenes/Enemy Attacks/Line Attack.gd" id="1_5d82g"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_be6nf"]
+
+[sub_resource type="Animation" id="Animation_36q2d"]
+resource_name = "Line Attack"
+length = 2.2
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 2.1, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"_match_collision_shape"
+}, {
+"args": [],
+"method": &"_execute_attack"
+}, {
+"args": [],
+"method": &"_disable_attack"
+}, {
+"args": [],
+"method": &"_destroy_self"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Line2D:default_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.7, 1.85, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 1, 0), Color(0, 0, 1, 0.701961), Color(0, 0, 1, 0.505882), Color(1, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4wuhi"]
+_data = {
+"Line Attack": SubResource("Animation_36q2d")
+}
+
+[node name="LineAttack" type="Area2D"]
+script = ExtResource("1_5d82g")
+
+[node name="Line2D" type="Line2D" parent="."]
+default_color = Color(1, 1, 1, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("SegmentShape2D_be6nf")
+disabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4wuhi")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

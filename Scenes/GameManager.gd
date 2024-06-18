@@ -66,8 +66,8 @@ func _process(_delta):
 		if (rng.randi_range(0, 255) > 225):
 			add_child(EnemyFactory._createMook(_pick_spawn_point_relative_to_player()))
 		
-		if (rng.randi_range(0, 255) > 225):
-			add_child(EnemyFactory._createEyeball(_pick_spawn_point_relative_to_player()))
+		#if (rng.randi_range(0, 255) > 225):
+		#	add_child(EnemyFactory._createEyeball(_pick_spawn_point_relative_to_player()))
 	
 func _do_stomp(level, direction):
 	var stompInstance = stompLoader.instantiate()

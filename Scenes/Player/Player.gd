@@ -41,6 +41,7 @@ func _enable_attacks(is_enabled : bool):
 	else:
 		get_node("StompTimer").stop()
 		get_node("ShotTimer").stop()
+	pass
 	
 func _level_up(skill_name):
 	match skill_name:

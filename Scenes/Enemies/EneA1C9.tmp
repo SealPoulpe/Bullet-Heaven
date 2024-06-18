@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://22cn1ubkcw23"]
+
+[ext_resource type="Script" path="res://Scenes/Enemies/EnemyFactory.gd" id="1_yyldx"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o3lpn"]
+
+[node name="EnemyFactory" type="Node2D"]
+script = ExtResource("1_yyldx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_o3lpn")
+}
