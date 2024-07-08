@@ -52,7 +52,7 @@ _data = {
 script = ExtResource("1_5d82g")
 
 [node name="Line2D" type="Line2D" parent="."]
-default_color = Color(1, 1, 1, 0)
+default_color = Color(0, 0, 1, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("SegmentShape2D_be6nf")

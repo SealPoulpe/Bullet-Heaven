@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bapydxcf8u41d"]
+[gd_scene load_steps=5 format=3 uid="uid://bapydxcf8u41d"]
+
+[ext_resource type="Script" path="res://Scenes/Damage Number/Damage Number.gd" id="1_d1kdp"]
 
 [sub_resource type="Animation" id="Animation_l3b2u"]
 resource_name = "Damage Vanish"
@@ -100,6 +102,7 @@ _data = {
 
 [node name="DamageNumber" type="Node2D"]
 z_index = 5
+script = ExtResource("1_d1kdp")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

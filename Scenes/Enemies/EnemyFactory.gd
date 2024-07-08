@@ -14,6 +14,7 @@ var bulletLoader = ResourceLoader.load("res://Scenes/Enemy Attacks/Bad Bullet.ts
 var cachedBadBullets = [];
 
 var line_attack_loader = ResourceLoader.load("res://Scenes/Enemy Attacks/Line Attack.tscn")
+var damage_number_loader = ResourceLoader.load("res://Scenes/Damage Number/Damage Number.tscn")
 
 signal create_experience_crystal(position)
 
@@ -70,7 +71,21 @@ func _create_line_attack(enemy: CharacterBody2D):
 	
 	new_line_attack.get_node("Line2D").add_point(Vector2(new_x, new_y))
 	
+	enemy.stop_animations.connect(new_line_attack._animation_stopped)
+	
 	enemy.add_child(new_line_attack)
+	pass
+	
+func _create_damage_number(enemy: CharacterBody2D, damage_amount: int):
+	var new_damage_number = damage_number_loader.instantiate();
+	
+	new_damage_number.get_node("Label_Container").get_node("Label").text = str(damage_amount)
+	new_damage_number.get_node("AnimationPlayer").play("Damage Vanish");
+	new_damage_number.position.y = -25
+	
+	enemy.stop_animations.connect(new_damage_number._animation_stopped)
+	
+	enemy.add_child(new_damage_number)
 	pass
 	
 func _killEnemy(node: Enemy):
@@ -80,11 +95,12 @@ func _killEnemy(node: Enemy):
 		"eyeball":
 			cachedEyeballs.append(node);
 		"mook":
+			node.stop_animations.emit()
 			cachedMooks.append(node);
 		_:
 			assert(false, "unregistered enemy type")
 			
-	create_experience_crystal.emit(node.position)
+	#create_experience_crystal.emit(node.position)
 	pass;
 
 func _killBullet(node): # TODO: Enemy Attacks need a generic type

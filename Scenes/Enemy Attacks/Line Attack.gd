@@ -29,5 +29,10 @@ func _on_body_entered(body):
 		
 	player_instance._got_hit();
 	
+#called when enemy is killed during animation
+func _animation_stopped():
+	get_node("AnimationPlayer").stop();
+	_destroy_self();
+	
 func _destroy_self():
 	self.queue_free();
