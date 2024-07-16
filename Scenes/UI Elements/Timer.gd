@@ -16,3 +16,9 @@ func _process(_delta):
 	var seconds_left = get_node("Timer").time_left
 	get_node("Label").text = _convert_to_pretty_time_string(seconds_left);
 	pass
+
+func _stop():
+	get_node("Timer").stop();
+	
+func _start(time: int):
+	get_node("Timer").start(time);
