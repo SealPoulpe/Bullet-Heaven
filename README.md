@@ -3,6 +3,7 @@
 Rudimentary core of a bullet heaven game made in Godot. <br>
 <br>
 Scenes, player and player attacks, enemies and enemy attacks, experience crystals, and player health and level ups implemented. <br>
+Backend customized to reuse enemy IDs and efficiently garbage collect.<br>
 
 <img width="600" alt="image" src="https://github.com/user-attachments/assets/85cad3d5-f28f-4755-9358-98fe9230ea8b" />
 
